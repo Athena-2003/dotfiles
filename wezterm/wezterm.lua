@@ -1,12 +1,14 @@
 local wezterm = require 'wezterm'
 local config = {}
 
-config.font = wezterm.font { family = 'IosevkaTerm Nerd Font' , weight = 'Medium' }
+config.font = wezterm.font { family = 'JetBrainsMono Nerd Font' , weight = 'Medium', stretch = 'Normal' }
 config.color_scheme = 'rose-pine'
 
 --font size
-config.font_size = 13.5
+config.font_size = 13.0
 config.enable_tab_bar = false
+config.use_fancy_tab_bar=false
+config.tab_bar_at_bottom=true
 config.inactive_pane_hsb = {
   saturation = 0.9,
   brightness = 0.8,
