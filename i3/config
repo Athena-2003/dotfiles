@@ -22,11 +22,11 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: MesloLGS NF Regular 10
+font pango: JetbrainsMono Nerd Font Medium 10
 #Noto Sans Regular 10
 
 # set the mod key to the winkey:
-set $mod Mod4
+set $mod Mod1
 
 #####################
 # workspace layout: #
@@ -172,7 +172,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec --no-startup-id wezterm
 
 # kill focused window
 bindsym $mod+q kill
@@ -199,9 +199,9 @@ bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 # bindsym $mod+F1 exec xed ~/.config/i3/keybindings
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec light -A 5 
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 && notify-send "Brightness - $(light)"
 # && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
-bindsym XF86MonBrightnessDown exec light -U 5 
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 && notify-send "Brightness - $(light)" 
 #&& notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 
 # change focus
@@ -257,8 +257,8 @@ bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 # Multimedia Keys
 
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 
 # gradular volume control
 bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
@@ -277,7 +277,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec /usr/bin/firefox
+bindsym $mod+w exec /usr/bin/firefox-developer-edition
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
@@ -338,7 +338,7 @@ for_window [class=TelegramDesktop] focus
 # install xcompmgr package to use it (yay -S xcompmgr)
 #exec --no-startup-id xcompmgr -C -n &
 # or an more specialized config like this:
-#exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
+exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 #
 # or:
 #
@@ -348,7 +348,7 @@ for_window [class=TelegramDesktop] focus
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 # install picom package (yay -S picom)
 # start using default config 
-exec_always --no-startup-id picom -b
+# exec_always --no-startup-id picom -b
 #
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf
@@ -386,7 +386,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/spaceman.jpg 
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/leapoffaith.jpg
 #/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 
 # set powersavings for display:
@@ -537,9 +537,9 @@ client.background        $base
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
-		font pango: MesloLGS NF Regular 10
+		font pango: JetBrainsMono Nerd Font Medium 10
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position top
+	    	position bottom
 #	    	i3bar_command i3bar --transparency
 # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # reference: https://i3wm.org/docs/userguide.html#_tray_output
