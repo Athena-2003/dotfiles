@@ -1,4 +1,4 @@
-# This file is a modified version based on default i3-config-wizard config
+# This file is a modified version based on default i3-config-wizard configcon
 # source is available here:
 # https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/master/.config/i3/config
 # Maintainer: joekamprad [joekamprad@endeavouros.com]
@@ -22,11 +22,11 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: JetbrainsMono Nerd Font Medium 10
+font pango: FiraCode Nerd Font Medium 10
 #Noto Sans Regular 10
 
 # set the mod key to the winkey:
-set $mod Mod1
+set $mod Mod4
 
 #####################
 # workspace layout: #
@@ -277,7 +277,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec /usr/bin/firefox-developer-edition
+bindsym $mod+w exec --no-startup-id /usr/bin/thorium-browser
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
@@ -386,7 +386,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/leapoffaith.jpg
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/beach.png
 #/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 
 # set powersavings for display:
@@ -498,7 +498,7 @@ set $sky       #89dceb
 set $sapphire  #74c7ec
 set $blue      #89b4fa
 set $lavender  #b4befe
-set $text      #cdd6f4
+# set $text      #cdd6f4
 set $subtext1  #bac2de
 set $subtext0  #a6adc8
 set $overlay2  #9399b2
@@ -507,9 +507,26 @@ set $overlay0  #6c7086
 set $surface2  #585b70
 set $surface1  #45475a
 set $surface0  #313244
-set $base      #1e1e2e
+# set $base      #1e1e2e
 set $mantle    #181825
 set $crust     #11111b
+
+# set primary Rosé Pine colorscheme colors
+set $base           #191724
+set $surface        #1f1d2e
+set $overlay        #26233a
+set $muted          #6e6a86
+set $subtle         #908caa
+set $text           #e0def4
+set $love           #eb6f92
+set $gold           #f6c177
+set $rose           #ebbcba
+set $pine           #31748f
+set $foam           #9ccfd8
+set $iris           #c4a7e7
+set $highlightlow   #21202e
+set $highlightmed   #403d52
+set $highlighthigh  #524f67
 
 #My Colors
 set $wallback #0f161e
@@ -521,13 +538,22 @@ set $wallback #0f161e
 #client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
 #client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
-#colors for windows (catppuccin)
+# #colors for windows (catppuccin)
+# # target                 title     bg    text   indicator  border
+# client.focused           $pink     $base $text  $rosewater $green
+# client.focused_inactive  $mauve    $base $text  $rosewater $mauve
+# client.unfocused         $mauve    $base $text  $rosewater $mauve
+# client.urgent            $peach    $base $peach $overlay0  $peach
+# client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+# client.background        $base
+
+# Teming border and Windows --------------
 # target                 title     bg    text   indicator  border
-client.focused           $pink     $base $text  $rosewater $green
-client.focused_inactive  $mauve    $base $text  $rosewater $mauve
-client.unfocused         $mauve    $base $text  $rosewater $mauve
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.focused           $rose     $base $text  $rose      $rose
+client.focused_inactive  $text     $base $text  $subtle    $surface
+client.unfocused         $text     $base $text  $overlay   $overlay
+client.urgent            $text     $base $text  $love      $love
+client.placeholder       $base     $base $text  $overlay   $overlay
 client.background        $base
 
 ############################################
@@ -537,7 +563,7 @@ client.background        $base
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
-		font pango: JetBrainsMono Nerd Font Medium 10
+		font pango: FiraCode Nerd Font Medium 10
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	    	position bottom
 #	    	i3bar_command i3bar --transparency
