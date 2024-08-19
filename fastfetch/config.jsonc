@@ -1,0 +1,166 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "source": "~/.config/fastfetch/nixos.png",
+        "type": "kitty-direct",
+        "height": 20,
+        "width": 40,
+        "preserveAspectRatio":true,
+        "padding": {
+            "top": 3,
+            "left": 3
+        }
+    },
+    "modules": [
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+        },
+        {
+            "type": "host",
+            "key": "│ 💻",
+            "keyColor": "35"
+        },
+        {
+            "type": "cpu",
+            "key": "│ ",
+            "keyColor": "35"
+        },
+        {
+            "type": "gpu",
+            "key": "│ 󰍛",
+            "keyColor": "35"
+        },
+        {
+            "type": "memory",
+            "key": "│ 󰑭",
+            "keyColor": "35"
+        },
+        {
+            "type": "swap",
+            "key": "│ 󰑭",
+            "keyColor": "35"
+        },
+        {
+            "type": "disk",
+            "key": "│ ",
+            "keyColor": "35"
+        },
+        {
+            "type": "battery",
+            "key": "│ ",
+            "keyColor": "35"
+        },
+        {
+            "type": "display",
+            "key": "│ 🖥",
+            "keyColor": "35"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
+        },
+        // {
+        //     "type": "custom",
+        //     "format": "\u001b[31m OS -> NIXOS 24.05"
+        // },
+        {
+            "type": "os",
+            "key": "│ ├",
+            "keyColor": "31"
+        },
+        {
+            "type": "kernel",
+            "key": "│ ├",
+            "keyColor": "31"
+        },
+        {
+            "type": "packages",
+            "key": "│ ├󰏖",
+            "keyColor": "31"
+        },
+        {
+            "type": "shell",
+            "key": "└ └",
+            "keyColor": "31"
+        },
+        "break",
+        {
+            "type": "wm",
+            "key": " WM",
+            "keyColor": "32"
+        },
+        {
+            "type": "wmtheme",
+            "key": "│ ├󰉼",
+            "keyColor": "32"
+        },
+        {
+            "type": "terminal",
+            "key": "└ └",
+            "keyColor": "32"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌────────────────────Uptime / Age────────────────────┐"
+        },
+        {
+            "type": "command",
+            "key": "│ ",
+            "keyColor": "33",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+        },
+        {
+            "type": "uptime",
+            "key": "│ ",
+            "keyColor": "33"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        "colors"
+    ]
+  }
+
+//   "title",
+//   "separator",
+//   "os",
+//   "host",
+//   "kernel",
+//   "uptime",
+//   "packages",
+//   "shell",
+//   "display",
+//   "de",
+//   "wm",
+//   "wmtheme",
+//   "theme",
+//   "icons",
+//   "font",
+//   "cursor",
+//   "terminal",
+//   "terminalfont",
+//   "cpu",
+//   "gpu",
+//   "memory",
+//   "swap",
+//   "disk",
+//   "localip",
+//   "battery",
+//   "poweradapter",
+//   "locale",
+//   "break",
+//   "colors"
