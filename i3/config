@@ -54,7 +54,7 @@ new_window pixel 1
 # hide_edge_borders both
 
 # Set inner/outer gaps
-gaps inner 3
+gaps inner 2
 gaps outer 2
 
 # show window title bars (not officially supported with i3gaps)
@@ -172,7 +172,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id wezterm
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -277,7 +277,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec --no-startup-id /usr/bin/thorium-browser
+bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
@@ -336,9 +336,9 @@ for_window [class=TelegramDesktop] focus
 # xcompmgr: https://wiki.archlinux.org/title/Xcompmgr
 # manpage: https://man.archlinux.org/man/xcompmgr.1.en
 # install xcompmgr package to use it (yay -S xcompmgr)
-#exec --no-startup-id xcompmgr -C -n &
+exec --no-startup-id xcompmgr -C -n &
 # or an more specialized config like this:
-exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
+# exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 #
 # or:
 #
@@ -386,7 +386,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/beach.png
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/thunderstormsea.png
 #/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 
 # set powersavings for display:
@@ -549,7 +549,7 @@ set $wallback #0f161e
 
 # Teming border and Windows --------------
 # target                 title     bg    text   indicator  border
-client.focused           $rose     $base $text  $rose      $rose
+client.focused           $rose     $base $text  $rose      #fb4934
 client.focused_inactive  $text     $base $text  $subtle    $surface
 client.unfocused         $text     $base $text  $overlay   $overlay
 client.urgent            $text     $base $text  $love      $love
@@ -563,9 +563,9 @@ client.background        $base
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
-		font pango: FiraCode Nerd Font Medium 10
+		font pango: JetBrainsMono Nerd Font Medium 9
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position bottom
+	    	position top 
 #	    	i3bar_command i3bar --transparency
 # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # reference: https://i3wm.org/docs/userguide.html#_tray_output
@@ -583,7 +583,7 @@ strip_workspace_numbers yes
 		    background         $wallback
 		    statusline         $white
 #                          		border 		        bg		txt		indicator
-		focused_workspace	$green   	   	$green		$crust   	$purple
+		focused_workspace	#fabd2f			#fabd2f		$crust   	$purple
 		active_workspace	$lavender       	$base   	$text   	$purple
 		inactive_workspace	$base   		$base   	$text		$purple
 		urgent_workspace	$urgentred	    	$urgentred	$text		$purple
@@ -627,8 +627,7 @@ strip_workspace_numbers yes
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
-bindsym $mod+d exec rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+d exec rofi -modi drun -show drun 
 
 #bindsym F9 exec rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
