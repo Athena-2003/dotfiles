@@ -4,11 +4,14 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Add doom emacs cli to the path
+export PATH="$HOME/.config/emacs/bin:$PATH"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="fox"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -101,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #start oh-my-posh theme
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # alias nvim to vim
 alias vim="nvim"
@@ -111,7 +114,7 @@ alias vim="nvim"
 alias tmux="tmux -u"
 
 #alias ls to use eza
-alias ls="eza --icons=always --header"
+# alias ls="eza --icons=always --header"
 
 # bun completions
 [ -s "/home/shashankbn/.bun/_bun" ] && source "/home/shashankbn/.bun/_bun"
@@ -119,3 +122,14 @@ alias ls="eza --icons=always --header"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# set editor environment variable to nvim
+export EDITOR=nvim
+
+# trying out direnv to see if it is aksually helpful
+# eval "$(direnv hook zsh)"
+
+# set the alias for tmux sessionizer script
+alias search="$HOME/.openVim.sh"
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5F627F"
