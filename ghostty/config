@@ -1,0 +1,7 @@
+font-family =  "TX-02"
+font-feature = -calt
+font-size = 14
+theme = gruber-darker
+gtk-titlebar = false
+cursor-style = block
+shell-integration-features = no-cursor, no-sudo, title
