@@ -1,9 +1,9 @@
 /*******************************************************
  * ROFI configs i3 powermenu for EndeavourOS
- * Maintainer: joekamprad <joekamprad@endeavouros.com>
+ * Maintainer: joekamprad [joekamprad //a_t// endeavouros.com]
  *******************************************************/
 configuration {
-    font:            "Noto Sans Regular 10";
+    font:            "JetBrainsMono Nerd Font Regular 10";
     show-icons:      false;
     icon-theme:      "Qogir";
     scroll-method:   0;
@@ -11,7 +11,8 @@ configuration {
     sidebar-mode:    false;
 }
 
-@import "~/.config/rofi/arc_dark_transparent_colors.rasi"
+@import "~/.config/rofi/config.rasi"
+/* Insert theme modifications after this */
 
 window {
     background-color: @background;

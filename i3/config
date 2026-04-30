@@ -22,7 +22,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: FiraCode Nerd Font Medium 10
+font pango: JetBrainsMono Nerd Font Medium 9
 #Noto Sans Regular 10
 
 # set the mod key to the winkey:
@@ -54,8 +54,8 @@ new_window pixel 1
 # hide_edge_borders both
 
 # Set inner/outer gaps
-gaps inner 2
-gaps outer 2
+# gaps inner 2
+# gaps outer 4
 
 # show window title bars (not officially supported with i3gaps)
 #default_border normal
@@ -172,7 +172,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id kitty
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -382,11 +382,26 @@ exec --no-startup-id numlockx on
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id ~/.screenlayout/monitor.sh
+#exec --no-startup-id ~/.screenlayout/monitor.sh
+#Switch monitor modes
+mode "mode: [l]eft_extend [r]ight_extend [m]irror [s]ystem_only [h]dmi_only"{
+	bindsym m exec xrandr --output HDMI-A-0 --same-as eDP
+	bindsym r exec xrandr --output HDMI-A-0 --auto --right-of eDP 
+	bindsym l exec xrandr --output HDMI-A-0 --auto --left-of eDP 
+	bindsym s exec xrandr --output eDP --auto | xrandr --output HDMI-A-0 --off 
+	bindsym h exec xrandr --output eDP --off
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+
+}
+bindsym $mod+m mode "mode: [l]eft_extend [r]ight_extend [m]irror [s]ystem_only [h]dmi_only"
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Right move workspace to output right
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/thunderstormsea.png
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/spaceman.jpg
 #/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 
 # set powersavings for display:
@@ -407,12 +422,12 @@ exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
 # Desktop notifications
 # dunst config used ~/.config/dunst/dunstrc
 # set alternative config if needed:
-#exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
+exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
 # may yneed to run dbus-launch explicitly: 
-#exec --no-startup-id dbus-launch dunst
+# exec --no-startup-id dbus-launch dunst
 #exec --no-startup-id dunst
 # alternative if you installed aside with XFCE4:
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 # autotiling script
 # https://github.com/nwg-piotr/autotiling
@@ -532,11 +547,11 @@ set $highlighthigh  #524f67
 set $wallback #0f161e
 
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-#client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-#client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-#client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-#client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+# class		        	border		bground		text		indicator	child_border
+client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
+client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
+client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
+client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
 # #colors for windows (catppuccin)
 # # target                 title     bg    text   indicator  border
@@ -547,14 +562,14 @@ set $wallback #0f161e
 # client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 # client.background        $base
 
-# Teming border and Windows --------------
-# target                 title     bg    text   indicator  border
-client.focused           $rose     $base $text  $rose      #fb4934
-client.focused_inactive  $text     $base $text  $subtle    $surface
-client.unfocused         $text     $base $text  $overlay   $overlay
-client.urgent            $text     $base $text  $love      $love
-client.placeholder       $base     $base $text  $overlay   $overlay
-client.background        $base
+# # Teming border and Windows --------------
+# # target                 title     bg    text   indicator  border
+# client.focused           $rose     $base $text  $rose      #fb4934
+# client.focused_inactive  $text     $base $text  $subtle    $surface
+# client.unfocused         $text     $base $text  $overlay   $overlay
+# client.urgent            $text     $base $text  $love      $love
+# client.placeholder       $base     $base $text  $overlay   $overlay
+# client.background        $base
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -565,7 +580,7 @@ client.background        $base
 bar {
 		font pango: JetBrainsMono Nerd Font Medium 9
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position top 
+	    	position bottom
 #	    	i3bar_command i3bar --transparency
 # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # reference: https://i3wm.org/docs/userguide.html#_tray_output
@@ -578,16 +593,17 @@ bar {
 strip_workspace_numbers yes
 ##strip_workspace_name no
 
-		    colors {
+		colors {
 		    separator          $mauve
 		    background         $wallback
 		    statusline         $white
 #                          		border 		        bg		txt		indicator
-		focused_workspace	#fabd2f			#fabd2f		$crust   	$purple
+		focused_workspace	$green   	   	$green		$crust   	$purple
 		active_workspace	$lavender       	$base   	$text   	$purple
 		inactive_workspace	$base   		$base   	$text		$purple
 		urgent_workspace	$urgentred	    	$urgentred	$text		$purple
 	}
+
 }
 
 # you can add different bars for multidisplay setups on each display:
@@ -627,7 +643,8 @@ strip_workspace_numbers yes
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
-bindsym $mod+d exec rofi -modi drun -show drun 
+bindsym $mod+d exec rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
 
 #bindsym F9 exec rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
